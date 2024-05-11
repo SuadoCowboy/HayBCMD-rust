@@ -1,0 +1,15 @@
+[package]
+name = "haybcmd"
+version = "0.1.0"
+edition = "2021"
+authors = ["Lucca Rieffel Silva <luccacsg@gmail.com>"]
+license = "MIT"
+description = "A command prompt like interpreter"
+readme = "README.md"
+homepage = "https://github.com/SuadoCowboy/HayBCMD"
+repository = "https://github.com/SuadoCowboy/HayBCMD"
+keywords = ["cli", "search", "demo"]
+categories = ["command-line-utilities"]
+
+
+[dependencies]
