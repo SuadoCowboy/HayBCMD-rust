@@ -1,6 +1,6 @@
 use std::fmt;
 
-#[derive(PartialEq, Eq)]
+#[derive(PartialEq, Eq, Clone)]
 pub enum TokenType {
     NOTHING = 0,
     VARIABLE,
@@ -24,7 +24,7 @@ impl fmt::Display for TokenType {
     }
 }
 
-#[derive(PartialEq, Eq)]
+#[derive(PartialEq, Eq, Clone)]
 pub struct Token {
     pub token_type: TokenType,
     pub value: String,

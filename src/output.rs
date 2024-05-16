@@ -1,19 +1,18 @@
-use std::io::{Stdout, Write};
-
-pub struct Output {
-    pub pipe: Option<Stdout>,
+/// while it's just testing, it will be as simple as that,<br>
+/// but when i start making a game i will change this code<br>
+/// to be related with the game interface
+pub fn print<S: ToString>(s: S) { 
+    print!("{}", s.to_string());
 }
 
-impl Output {
-    pub fn new(pipe: Stdout) -> Self {
-        Output { pipe: Some(pipe) }
-    }
+pub fn println<S: ToString>(s: S) { 
+    println!("{}", s.to_string());
+}
 
-    pub fn print(&self, str: &str) {
-        self.pipe.as_ref().unwrap().lock().write_all(str.as_bytes()).unwrap();
-    }
+pub fn print_unknown_command(command: &str) {
+    println!("unknown command \"{}\"", command);
+}
 
-    pub fn print_unknown_command(&self, command: &str) {
-        self.pipe.as_ref().unwrap().lock().write_fmt(format_args!("unknown command \"{}\"\n", command)).unwrap();
-    }
+pub fn print_command_usage(name: String, usage: String) {
+    println(&format!("{} {}", name, usage));
 }

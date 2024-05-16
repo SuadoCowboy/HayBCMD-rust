@@ -1,23 +1,20 @@
-use std::sync::Mutex;
-
 pub mod output;
 pub mod token;
 pub mod lexer;
 pub mod parser;
 pub mod command;
 
-static OUTPUT: Mutex<output::Output> = Mutex::new(output::Output{pipe: None});
+pub fn init() -> (command::CommandsHandler, command::CommandsFuncs) {
+    let mut commands_handler = command::CommandsHandler::new();
+    let mut commands_funcs = command::CommandsFuncs::new();
 
-pub fn set_output_pipe(pipe: std::io::Stdout) {
-    OUTPUT.lock().unwrap().pipe = Some(pipe);
+    command::init_base_commands(&mut commands_handler, &mut commands_funcs);
+
+    (commands_handler, commands_funcs)
 }
 
-pub fn init(pipe: std::io::Stdout) {
-    OUTPUT.lock().unwrap().pipe = Some(pipe);
-}
-
-pub fn parse(str: String) -> String {
-    //let parser_var = parser::new();
-    //parser_var.parse(str)
-    String::from("")
+pub fn parse(commands_handler: command::CommandsHandler, commands_funcs: command::CommandsFuncs, str: String) {
+    let lexer = lexer::Lexer::new(str);
+    let mut parser_var = parser::Parser::new(Box::new(lexer), Box::new(commands_handler), commands_funcs);
+    parser_var.parse();
 }

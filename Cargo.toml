@@ -10,6 +10,3 @@ homepage = "https://github.com/SuadoCowboy/HayBCMD-rust"
 repository = "https://github.com/SuadoCowboy/HayBCMD-rust"
 keywords = ["cmd", "command", "prompt", "interpreter"]
 categories = ["interpreter"]
-
-
-[dependencies]
