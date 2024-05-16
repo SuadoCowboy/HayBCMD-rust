@@ -45,6 +45,15 @@ impl CommandsFuncs {
     pub fn push(&mut self, command_func: impl CommandCall + 'static) {
         self.commands_funcs.push(Box::new(command_func));
     }
+
+    pub fn get(&self) -> Vec<Box<dyn CommandCall>> {
+        let mut v = vec!();
+        for i in self.commands_funcs {
+            v.push(i);
+        }
+
+        v
+    }
 }
 
 #[derive(Clone)]

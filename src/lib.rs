@@ -1,3 +1,5 @@
+use command::CommandsFuncs;
+
 pub mod output;
 pub mod token;
 pub mod lexer;
@@ -13,8 +15,9 @@ pub fn init() -> (command::CommandsHandler, command::CommandsFuncs) {
     (commands_handler, commands_funcs)
 }
 
-pub fn parse(commands_handler: command::CommandsHandler, commands_funcs: command::CommandsFuncs, str: String) {
+pub fn parse(commands_handler: command::CommandsHandler, commands_funcs: CommandsFuncs, str: String) {
     let lexer = lexer::Lexer::new(str);
+
     let mut parser_var = parser::Parser::new(Box::new(lexer), Box::new(commands_handler), commands_funcs);
     parser_var.parse();
 }

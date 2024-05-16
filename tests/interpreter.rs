@@ -13,7 +13,7 @@ mod tests {
             variables;
         "#);
 
-        haybcmd::parse(Box::new(commands_handler), Box::new(commands_funcs), input);
+        haybcmd::parse(commands_handler, commands_funcs, input);
 
         assert!(true);
     }
